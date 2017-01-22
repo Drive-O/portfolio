@@ -1,0 +1,5 @@
+@import "normalize.css";
+
+$white : #fff;
+
+h1{ color: $white; }
