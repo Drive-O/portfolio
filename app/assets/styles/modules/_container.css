@@ -1,55 +1,124 @@
 .container{
 	width: 100vw;
-	/*height: 100vh;*/
+	/*height: 100vh; -> Wenn 100% vom Viewport Height dann skalierungsprobleme*/ 
 	display: flex;
 	flex-flow: column nowrap; /*Wenn Screen größer row*/
+
+	@mixin atMedium{
+		flex-flow: row-reverse nowrap;
+		align-items: flex-start;
+	}
 
 	&__row{
 		width: 100%;
 		display: flex;
 		flex-flow: row nowrap;
 
-		&__header{
-			width: 100%;
-			height: 0;
-			padding-top: 66.42%; /* Hack to autoscale: img-height/img-width*container-width */ 
-			background: url("../../assets/img/bg.jpg");
-			background-size: cover;
-			font-size: 3.5rem;
 
-			&__txt__h5{
-				color: #fff;
-				position: absolute;
-				top: 18%;
-				left: 50%;
-				font-weight: 100;
-				transform: translateX(-50%);
-			}
-			&__txt__h6{
-				color: #fff;
-				position: absolute;
-				font-weight: 100;
-				top: 24%;
-				left: 50%;
-				transform: translateX(-50%);
-				font-size: 1.5rem;
-			}
-
+		@mixin atMedium{
+			flex-flow: column nowrap;
 		}
 
-		&__box{
+		&__innerrow{
+
 			width: 100%;
-			border: 0.1rem solid $turquoise;
 			display: flex;
-			flex-flow: row nowrap;
-			justify-content: center;
-			align-items: center;
+			flex-flow: column nowrap;
+
+			@mixin atMedium{
+				flex-flow: column wrap;
+
+			}
+			&__content{
+					padding: 1.1rem 1.4rem;
+				&__hl{
+					font-weight: 100;
+					font-size: 4.5rem;
+					margin-bottom: 1.2rem;
+				}
+				&__p{
+					font-size: 1.5rem;
+					letter-spacing: 0.1rem;
+				}
+			}
+			&__header{
+				width: 100%;
+				height: 0;
+				padding-top: 66.42%; /* Hack to autoscale: img-height/img-width*container-width */ 
+				background: url("../../assets/img/bg.jpg");
+				background-size: cover;
+				font-size: 4.5rem;
+
+				&__txt{
+					color: #fff;
+					position: absolute;
+					top: 19%;
+					left: 50%;
+					transform: translateX(-50%);
+
+					@mixin atSmall{
+						top: 5%;
+						font-size: 5rem;
+					}
+
+					&__h5{
+						font-weight: 100;
+
+						@mixin atMedium{
+							font-size: 6rem;
+						}
+						@mixin atLarge{
+							font-size: 9rem;
+						}
+					}
+					&__h6{
+						font-weight: 100;
+						font-size: 2rem;
+					}
+				}
+			}
+
+			&__box{
+				width: 100%;
+				border: 0.1rem solid $turquoise;
+				display: flex;
+				flex-flow: row nowrap;
+				justify-content: center;
+				align-items: center;
+				@mixin atMedium{
+					border: none;
+					background: $green;
+				}
+				&__icon{
+					transition: 0.4s;
+				}
+				&__icon:hover{
+					transform: scale(0.8);
+				}
+			}
+
+			&__box:before{
+				content: "";
+				display: block;
+				padding-top: 100%; 	/* Fix, das jede Box sich automatisch skaliert */
+			}
+
 		}
 
-		&__box:before{
-			content: "";
-			display: block;
-			padding-top: 100%; 	/* Fix, das jede Box sich automatisch skaliert */
-		}
+	}
+}
+
+.nav-fix-large{
+	@mixin atMedium{
+		width: 15%;
+	}
+}
+.fix-small-layout{
+	display: none;
+	@mixin atSmall{
+		display: none;
+	}
+	@mixin atMedium{
+		display: block;
 	}
 }

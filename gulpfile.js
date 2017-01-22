@@ -5,7 +5,8 @@ prefix = require("autoprefixer"),
 imports = require("postcss-import"),
 variables = require("postcss-simple-vars"),
 nesting = require("postcss-nesting"),
-browserSync = require("browser-sync").create();
+browserSync = require("browser-sync").create(),
+mixins = require("postcss-mixins");
 /*#################################################################################*/
 gulp.task("default", function(){
 	console.log("DEFAULT TASK");
@@ -13,7 +14,7 @@ gulp.task("default", function(){
 
 gulp.task("css", function(){
 	return gulp.src("./app/assets/styles/styles.css")
-	.pipe(postcss([imports, prefix, variables, nesting]))
+	.pipe(postcss([imports, mixins, prefix, variables, nesting]))
 	.on("error", function(errorInfo){
 		console.log(errorInfo.toString());
 		this.emit("end");

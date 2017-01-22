@@ -474,12 +474,23 @@ h1, h2, h3, h4, h5, ul{
 
 .container{
 	width: 100vw;
-	/*height: 100vh;*/
-	display: -webkit-box;
-	display: -ms-flexbox;
+	/*height: 100vh; -> Wenn 100% vom Viewport Height dann skalierungsprobleme*/ 
+	display: -webkit-box; 
+	display: -ms-flexbox; 
 	display: flex;
 	-ms-flex-flow: column nowrap;
 	    flex-flow: column nowrap /*Wenn Screen größer row*/
+}
+
+@media(min-width: 800px) {
+
+  .container {
+    -ms-flex-flow: row-reverse nowrap;
+    flex-flow: row-reverse nowrap;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+  }
 }
 
 .container__row {
@@ -491,37 +502,96 @@ h1, h2, h3, h4, h5, ul{
   flex-flow: row nowrap;
 }
 
-.container__row__header {
+@media(min-width: 800px) {
+
+  .container__row {
+    -ms-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+  }
+}
+
+.container__row__innerrow {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+}
+
+@media(min-width: 800px) {
+
+  .container__row__innerrow {
+    -ms-flex-flow: column wrap;
+    flex-flow: column wrap;
+  }
+}
+
+.container__row__innerrow__content {
+  padding: 1.1rem 1.4rem;
+}
+
+.container__row__innerrow__content__hl {
+  font-weight: 100;
+  font-size: 4.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.container__row__innerrow__content__p {
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+}
+
+.container__row__innerrow__header {
   width: 100%;
   height: 0;
   padding-top: 66.42%;/* Hack to autoscale: img-height/img-width*container-width */
   background: url("../../assets/img/bg.jpg");
   background-size: cover;
-  font-size: 3.5rem;
+  font-size: 4.5rem;
 }
 
-.container__row__header__txt__h5 {
+.container__row__innerrow__header__txt {
   color: #fff;
   position: absolute;
-  top: 18%;
-  left: 50%;
-  font-weight: 100;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
-
-.container__row__header__txt__h6 {
-  color: #fff;
-  position: absolute;
-  font-weight: 100;
-  top: 24%;
+  top: 19%;
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
-  font-size: 1.5rem;
 }
 
-.container__row__box {
+@media(min-width: 530px) {
+
+  .container__row__innerrow__header__txt {
+    top: 5%;
+    font-size: 5rem;
+  }
+}
+
+.container__row__innerrow__header__txt__h5 {
+  font-weight: 100;
+}
+
+@media(min-width: 800px) {
+
+  .container__row__innerrow__header__txt__h5 {
+    font-size: 6rem;
+  }
+}
+
+@media(min-width: 1200px) {
+
+  .container__row__innerrow__header__txt__h5 {
+    font-size: 9rem;
+  }
+}
+
+.container__row__innerrow__header__txt__h6 {
+  font-weight: 100;
+  font-size: 2rem;
+}
+
+.container__row__innerrow__box {
   width: 100%;
   border: 0.1rem solid #1abc9c;
   display: -webkit-box;
@@ -537,8 +607,54 @@ h1, h2, h3, h4, h5, ul{
   align-items: center;
 }
 
-.container__row__box:before {
+@media(min-width: 800px) {
+
+  .container__row__innerrow__box {
+    border: none;
+    background: #2ecc71;
+  }
+}
+
+.container__row__innerrow__box__icon {
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.container__row__innerrow__box__icon:hover {
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
+}
+
+.container__row__innerrow__box:before {
   content: "";
   display: block;
   padding-top: 100%;/* Fix, das jede Box sich automatisch skaliert */
+}
+
+.nav-fix-large{
+}
+
+@media(min-width: 800px) {
+
+  .nav-fix-large {
+    width: 15%;
+  }
+}
+
+.fix-small-layout{
+	display: none
+}
+
+@media(min-width: 530px) {
+
+  .fix-small-layout {
+    display: none;
+  }
+}
+
+@media(min-width: 800px) {
+
+  .fix-small-layout {
+    display: block;
+  }
 }
