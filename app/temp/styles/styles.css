@@ -460,4 +460,85 @@ template {
   display: none;
 }
 
-h1{ color: #fff; }
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+
+h1, h2, h3, h4, h5, ul{ 
+	margin: 0;
+	padding: 0;
+}
+
+.container{
+	width: 100vw;
+	/*height: 100vh;*/
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-flow: column nowrap;
+	    flex-flow: column nowrap /*Wenn Screen größer row*/
+}
+
+.container__row {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+}
+
+.container__row__header {
+  width: 100%;
+  height: 0;
+  padding-top: 66.42%;/* Hack to autoscale: img-height/img-width*container-width */
+  background: url("../../assets/img/bg.jpg");
+  background-size: cover;
+  font-size: 3.5rem;
+}
+
+.container__row__header__txt__h5 {
+  color: #fff;
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  font-weight: 100;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.container__row__header__txt__h6 {
+  color: #fff;
+  position: absolute;
+  font-weight: 100;
+  top: 24%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+}
+
+.container__row__box {
+  width: 100%;
+  border: 0.1rem solid #1abc9c;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.container__row__box:before {
+  content: "";
+  display: block;
+  padding-top: 100%;/* Fix, das jede Box sich automatisch skaliert */
+}
